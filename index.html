@@ -1,0 +1,427 @@
+TESTMARKER_L1
+TESTMARKER_L2
+  indented<>&"`${x}END<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>30代パパのための「月3万円ねん出シミュレーター」｜30代パパの投資ラボ</title>
+<meta name="description" content="通信・保険・サブスク・光熱費など固定費の入力だけで、月いくら捻出できるかを瞬時に診断。30代パパが新NISA積立を続けるための家計改善診断ツール。" />
+<meta name="theme-color" content="#1A2B4C" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="30代パパの「月3万円ねん出シミュレーター」" />
+<meta property="og:description" content="固定費5項目を入力するだけで、月いくら捻出できるかを診断。新NISA積立20年後の差額もシミュレーション。" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:site_name" content="30代パパの投資ラボ" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="30代パパの「月3万円ねん出シミュレーター」" />
+<meta name="twitter:description" content="固定費5項目を入力するだけで、月いくら捻出できるかを診断。新NISA積立20年後の差額もシミュレーション。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231A2B4C'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='38' font-weight='bold' fill='%23D4AF37'%3E¥%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --navy: #1A2B4C;
+    --gold: #D4AF37;
+    --cream: #F7F3E9;
+    --plus: #2E7D5C;
+    --minus: #C44E3D;
+    --gray60: #6B7280;
+    --gray20: #E5E7EB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 720px; margin: 0 auto;
+    padding: 24px 18px 80px;
+  }
+  header {
+    text-align: center;
+    padding: 32px 16px 24px;
+    background: linear-gradient(180deg, var(--navy) 0%, #142037 100%);
+    color: var(--cream);
+  }
+  header h1 {
+    font-size: clamp(20px, 5vw, 28px);
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  header p {
+    font-size: 14px;
+    color: var(--gold);
+    margin: 0;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .intro {
+    background: #fff;
+    padding: 20px;
+    border-left: 4px solid var(--gold);
+    margin: 24px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(26,43,76,0.06);
+  }
+  .intro p {
+    margin: 0 0 8px;
+    font-size: 15px;
+  }
+  .question {
+    background: #fff;
+    padding: 18px 20px;
+    margin: 12px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(26,43,76,0.05);
+  }
+  .question label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  .question label .hint {
+    font-weight: normal;
+    color: var(--gray60);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .input-row {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .input-row input[type="number"] {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid var(--gray20);
+    border-radius: 6px;
+    background: #fafafa;
+  }
+  .input-row span {
+    color: var(--gray60);
+    font-size: 14px;
+  }
+  .choice-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 8px;
+  }
+  .choice-row label {
+    flex: 1; min-width: 120px;
+    background: #fff;
+    border: 2px solid var(--gray20);
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all 0.15s;
+  }
+  .choice-row label.selected {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
+  }
+  .choice-row input[type="radio"] { display: none; }
+  .cta-btn {
+    display: block; width: 100%;
+    background: var(--navy);
+    color: var(--cream);
+    border: none;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 24px 0 8px;
+    box-shadow: 0 4px 12px rgba(26,43,76,0.2);
+  }
+  .cta-btn:hover { background: #0f1a30; }
+  .results {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 28px 20px;
+    border-radius: 12px;
+    margin: 28px 0;
+    display: none;
+  }
+  .results.show { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .results h2 {
+    margin: 0 0 16px;
+    color: var(--gold);
+    font-size: 22px;
+    text-align: center;
+  }
+  .result-summary {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .result-summary .big-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--gold);
+    line-height: 1.0;
+    margin: 8px 0;
+  }
+  .result-summary .label {
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.85;
+  }
+  .breakdown {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .breakdown-item {
+    display: flex; justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+  }
+  .breakdown-item:last-child { border-bottom: none; font-weight: bold; color: var(--gold); }
+  .future-projection {
+    background: rgba(212,175,55,0.1);
+    border: 1px solid var(--gold);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 18px;
+  }
+  .future-projection h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--gold);
+  }
+  .future-projection p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+  .future-projection strong { color: var(--gold); font-size: 18px; }
+  .lead-form {
+    background: #fff;
+    color: var(--navy);
+    padding: 24px 20px;
+    margin-top: 24px;
+    border-radius: 12px;
+    border: 2px solid var(--gold);
+  }
+  .lead-form h3 {
+    margin: 0 0 12px;
+    color: var(--navy);
+    font-size: 18px;
+  }
+  .lead-form p {
+    margin: 4px 0 14px;
+    font-size: 14px;
+    color: var(--gray60);
+  }
+  .lead-form .cta-link {
+    display: block; text-align: center;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  .lead-form .cta-link:hover { opacity: 0.9; }
+  footer {
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 12px;
+    color: var(--gray60);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">30代パパ向け</span>
+  <h1>月3万円ねん出シミュレーター</h1>
+  <p>5問の入力で、新NISA積立の原資があなたの家計から生まれるか診断</p>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <p>「投資したい、でも月3万円って本当に出せるの…？」</p>
+    <p>30代パパが新NISAを続けるために、家計のどこから捻出できるかを<strong>5問・1分</strong>で診断します。</p>
+    <p>診断結果に基づいて、月いくら浮かせられるかと、20年後の積立効果まで見えます。</p>
+  </div>
+
+  <form id="simForm">
+
+    <div class="question">
+      <label>① 通信費（夫婦合計）<span class="hint">スマホ・自宅Wi-Fi</span></label>
+      <div class="input-row">
+        <input type="number" id="q_tsushin" value="15000" min="0" max="100000" />
+        <span>円/月</span>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>② 保険料（夫婦合計）<span class="hint">生命・医療・がん等</span></label>
+      <div class="input-row">
+        <input type="number" id="q_hoken" value="30000" min="0" max="200000" />
+        <span>円/月</span>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>③ サブスク合計<span class="hint">Netflix・Amazon・SaaS等</span></label>
+      <div class="input-row">
+        <input type="number" id="q_subsc" value="3000" min="0" max="50000" />
+        <span>円/月</span>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>④ 光熱費（電気・ガス）<span class="hint">夏冬平均</span></label>
+      <div class="input-row">
+        <input type="number" id="q_kounetsu" value="15000" min="0" max="80000" />
+        <span>円/月</span>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>⑤ ふるさと納税</label>
+      <div class="choice-row" id="furusato">
+        <label data-val="0" class="selected">
+          <input type="radio" name="furusato" value="0" checked />
+          まだやっていない
+        </label>
+        <label data-val="1">
+          <input type="radio" name="furusato" value="1" />
+          上限まで活用中
+        </label>
+        <label data-val="0.5">
+          <input type="radio" name="furusato" value="0.5" />
+          少しだけ活用
+        </label>
+      </div>
+    </div>
+
+    <button type="button" class="cta-btn" onclick="simulate()">診断する</button>
+  </form>
+
+  <div id="results" class="results">
+    <h2>🎯 診断結果</h2>
+    <div class="result-summary">
+      <div class="label">あなたの家計から月いくら捻出できるか</div>
+      <div class="big-number" id="totalSaving">¥0</div>
+      <div class="label">/ 月</div>
+    </div>
+
+    <div class="breakdown" id="breakdown">
+      <!-- ここにJSで明細挿入 -->
+    </div>
+
+    <div class="future-projection">
+      <h3>🌱 これを20年積立てると…</h3>
+      <p>元本：<strong id="genpon">¥0</strong></p>
+      <p>20年後（年利5%想定）：<strong id="future20">¥0</strong></p>
+      <p style="font-size: 12px; opacity: 0.8;">差額の<strong id="diff20">¥0</strong>が、複利の力で生まれる金額です</p>
+    </div>
+  </div>
+
+  <div class="lead-form" id="leadForm" style="display:none;">
+    <h3>📩 詳細な改善ロードマップが欲しい方へ</h3>
+    <p>診断結果に基づく「あなただけの家計改善7ステップ」を、メンバー限定記事として用意しています。<br><br>
+    通信費見直しの具体的乗り換え先、保険整理の判断軸、ふるさと納税の最強返礼品リストなど、月¥980で全公開中。</p>
+    <a href="https://note.com/manabu_toushi/membership" class="cta-link" target="_blank">
+      30代パパの投資ラボに参加する
+    </a>
+    <p style="margin-top:12px; font-size:12px;">初月¥480キャンペーン実施中（紹介コードは記事内コメントで配布）</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>30代パパの投資ラポ｜<a href="https://note.com/manabu_toushi" target="_blank">manabu_toushi</a> | <a href="https://x.com/yuu_toushi30" target="_blank">@yuu_toushi30</a></p>
+  <p style="margin-top:8px; opacity:0.7;">※本シミュレーターは概算です。実際の家計改善は個別状況により異なります。</p>
+</footer>
+
+<script>
+  // ラジオボタン選択UI
+  document.querySelectorAll('.choice-row label').forEach(lbl => {
+    lbl.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+      this.classList.add('selected');
+      this.querySelector('input').checked = true;
+    });
+  });
+
+  // 数字フォーマット
+  function yen(n) {
+    return '¥' + Math.round(n).toLocaleString();
+  }
+
+  // 家計改善モデル
+  // 各費目に「過剰」とみなす閾値と削減率を設定
+  function simulate() {
+    const tsushin = +document.getElementById('q_tsushin').value || 0;
+    const hoken = +document.getElementById('q_hoken').value || 0;
+    const subsc = +document.getElementById('q_subsc').value || 0;
+    const kounetsu = +document.getElementById('q_kounetsu').value || 0;
+    const furusato = +document.querySelector('input[name="furusato"]:checked').value;
+
+    // 削減モデル（実体験ベースの平均値）
+    // 通信費: 1.4万円超なら格安SIM化で-1万、それ以下は-50%
+    const cutTsushin = tsushin > 14000 ? Math.min(tsushin - 4000, 14000) : tsushin * 0.5;
+    // 保険: 3万円超なら過剰、半分まで削減目標
+    const cutHoken = hoken > 25000 ? hoken - 12000 : Math.max(0, hoken - 12000);
+    // サブスク: 2000円超は半分削減目安
+    const cutSubsc = subsc > 2000 ? subsc * 0.5 : 0;
+    // 光熱費: 1.2万円超なら-3000円目安
+    const cutKounetsu = kounetsu > 12000 ? Math.min(kounetsu - 9000, 4000) : 0;
+    // ふるさと納税: 未活用なら月相当1.5万円実質減
+    const cutFurusato = (1 - furusato) * 15000;
+
+    const total = cutTsushin + cutHoken + cutSubsc + cutKounetsu + cutFurusato;
+
+    // 表示
+    document.getElementById('totalSaving').textContent = yen(total);
+    document.getElementById('breakdown').innerHTML = `
+      <div class="breakdown-item"><span>📱 通信費見直し</span><span>${yen(cutTsushin)}</span></div>
+      <div class="breakdown-item"><span>🛡 保険整理</span><span>${yen(cutHoken)}</span></div>
+      <div class="breakdown-item"><span>🔄 サブスク棚卸し</span><span>${yen(cutSubsc)}</span></div>
+      <div class="breakdown-item"><span>💡 光熱費プラン最適化</span><span>${yen(cutKounetsu)}</span></div>
+      <div class="breakdown-item"><span>🎁 ふるさと納税活用</span><span>${yen(cutFurusato)}</span></div>
+      <div class="breakdown-item"><span>合計</span><span>${yen(total)}</span></div>
+    `;
+
+    // 20年積立シミュ（年利5%・月複利近似）
+    const monthly = total;
+    const months = 20 * 12;
+    const r = 0.05 / 12;
+    let future = 0;
+    for (let i = 0; i < months; i++) {
+      future = (future + monthly) * (1 + r);
+    }
+    const genpon = monthly * months;
+    document.getElementById('genpon').textContent = yen(genpon);
+    document.getElementById('future20').textContent = yen(future);
+    document.getElementById('diff20').textContent = yen(future - genpon);
+
+    document.getElementById('results').classList.add('show');
+    document.getElementById('leadForm').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
