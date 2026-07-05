@@ -340,6 +340,10 @@
       <p style="font-size: 13px;">この数字を、実際に「浮かせる」ところまで。1日5〜10分×5日で、通信費・保険・サブスク・光熱費を1つずつ棚卸しする無料連載です。</p>
       <a href="https://note.com/manabu_toushi/n/n8ecec4fe3754" class="cta-link" target="_blank">Day1を読む</a>
     </div>
+
+    <div style="text-align:center; margin-top:16px;">
+      <a id="shareX" class="cta-link" target="_blank" rel="noopener" style="background:transparent; border:1px solid var(--gold); color:var(--gold);">📣 診断結果をXでシェアする</a>
+    </div>
   </div>
 
   <div class="lead-form" id="leadForm" style="display:none;">
@@ -418,6 +422,13 @@
     }
     const genpon = monthly * months;
     document.getElementById('genpon').textContent = yen(genpon);
+
+    // Xシェアリンク（診断結果つき）
+    const shareBtn = document.getElementById('shareX');
+    if (shareBtn) {
+      const shareText = '家計を30秒診断したら、月' + yen(total) + 'ねん出できそうという結果に。固定費、数字で見ると動けるかも。';
+      shareBtn.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent('https://h19901020-pixel.github.io/kakei-simulator/');
+    }
     document.getElementById('future20').textContent = yen(future);
     document.getElementById('diff20').textContent = yen(future - genpon);
 
