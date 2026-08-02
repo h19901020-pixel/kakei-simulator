@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>移動しています…</title>
+<!-- ▼計測タグ挿入位置（Cloudflare Web Analytics のスニペットをここに貼るだけで有効化） -->
+<!-- ANALYTICS_SLOT -->
+<script>
+(function(){
+  // 行き先テーブル（?t= で指定 / ?s= で出所を記録）
+  var MAP = {
+    tpl:   "https://note.com/manabu_toushi/n/n32fb49b41903",
+    day1:  "https://note.com/manabu_toushi/n/n8ecec4fe3754",
+    kakei: "https://note.com/manabu_toushi/n/n92e026986168",
+    slump: "https://note.com/manabu_toushi/n/n05ed7bb57d95",
+    note:  "https://note.com/manabu_toushi",
+    sim:   "https://h19901020-pixel.github.io/kakei-simulator/",
+    xlsx:  "https://h19901020-pixel.github.io/kakei-simulator/kakei_template.xlsx"
+  };
+  var p, t = "note", s = "direct";
+  try { p = new URLSearchParams(location.search); t = p.get("t") || "note"; s = p.get("s") || "direct"; } catch(e){}
+  var dest = MAP[t] || MAP.note;
+  // 計測タグが入っていればイベントを送る（未設定でも転送は必ず動く）
+  try { if (window.goatcounter && goatcounter.count) goatcounter.count({path: "/go/" + t + "?s=" + s, event: true}); } catch(e){}
+  // 転送先にも出所を残す（noteダッシュボード/流入元でも追える）
+  try {
+    if (dest.indexOf("http") === 0 && dest.indexOf(".xlsx") < 0) {
+      dest += (dest.indexOf("?") >= 0 ? "&" : "?") + "utm_source=" + encodeURIComponent(s) + "&utm_medium=go&utm_campaign=" + encodeURIComponent(t);
+    }
+  } catch(e){}
+  setTimeout(function(){ location.replace(dest); }, 120);  // 計測ビーコンの送出を待つ
+  document.addEventListener("DOMContentLoaded", function(){
+    var a = document.getElementById("fallback"); if (a) a.href = dest;
+  });
+})();
+</script>
+</head><body style="font-family:system-ui,-apple-system,sans-serif;padding:2rem;text-align:center;color:#1A2B4C">
+<p>移動しています…</p>
+<p><a id="fallback" href="https://note.com/manabu_toushi">開かない場合はこちらをタップ</a></p>
+<noscript><p><a href="https://note.com/manabu_toushi/n/n32fb49b41903">こちらから開いてください</a></p></noscript>
+</body></html>
